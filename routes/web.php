@@ -18,6 +18,8 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/dashboard','AdminController@renderAdminLayout');
 Route::get('/logout','AdminController@Logout');
 Route::post('/admin-dashboard', 'AdminController@Dashboard');
+Route::post('/search-product', 'AdminController@Search');
+
 
 // category-product
 Route::get('/add-category-product', 'CateGoryProduct@add_category_product');

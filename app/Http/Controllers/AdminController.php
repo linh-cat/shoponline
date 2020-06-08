@@ -46,4 +46,13 @@ class AdminController extends Controller
         Session::put('admin_id', null);
         return Redirect::to('/admin');
     }
+    public function Search(Request $request){
+        $keywords = $request->search_product;
+        $all_product = DB::table('tbl_product')
+        ->join('tbl_category_product','tbl_category_product.category_id', '=', 'tbl_product.category_id')
+        ->join('tbl_brand_product','tbl_brand_product.brand_id', '=', 'tbl_product.brand_id')->orderby('tbl_product.product_id', 'desc')->where('product_name', 'like', '%' .$keywords.'%')->get();
+
+        $manager_product = view('admin.show_search_product')->with('search_product', $all_product);
+        return view('admin_layout')->with('admin.show_search_product', $manager_product);
+    }
 }

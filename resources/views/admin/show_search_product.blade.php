@@ -49,7 +49,7 @@
           </thead>
           <tbody>
 
-                @foreach ($all_product as $key => $pro)
+                @foreach ($search_product as $key => $pro)
                 <tr>
                     <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
                     <td>{{$pro->product_name}}</td>
