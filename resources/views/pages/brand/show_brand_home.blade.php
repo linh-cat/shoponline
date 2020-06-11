@@ -30,5 +30,5 @@
     @endforeach
 </div>
 <!--features_items-->
-
+<div>{{$brand_by_id->links()}}</div>
 @endsection

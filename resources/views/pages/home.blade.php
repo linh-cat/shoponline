@@ -19,6 +19,7 @@
     </a>
     @endforeach
 </div>
+<div>{{$all_product->links()}}</div>
 <!--features_items-->
 
 @endsection

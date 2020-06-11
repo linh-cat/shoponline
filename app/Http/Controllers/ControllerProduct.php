@@ -28,7 +28,7 @@ class ControllerProduct extends Controller
         $this->AuthLogin();
         $all_product = DB::table('tbl_product')
         ->join('tbl_category_product','tbl_category_product.category_id', '=', 'tbl_product.category_id')
-        ->join('tbl_brand_product','tbl_brand_product.brand_id', '=', 'tbl_product.brand_id')->orderby('tbl_product.product_id', 'desc')->get();
+        ->join('tbl_brand_product','tbl_brand_product.brand_id', '=', 'tbl_product.brand_id')->orderby('tbl_product.product_id', 'desc')->paginate(4);
         $manager_product = view('admin.all_product')->with('all_product', $all_product);
         return view('admin_layout')->with('admin.all_product', $manager_product);
     }
@@ -123,14 +123,6 @@ class ControllerProduct extends Controller
         ->join('tbl_brand_product','tbl_brand_product.brand_id', '=', 'tbl_product.brand_id')
         ->where('tbl_product.product_id', $product_id)->get();
 
-        // foreach($detail_product as $key => $value){
-        //     $category_id = $value->$category_id;
-        // }
-
-        // $related_product = DB::table('tbl_product')
-        // ->join('tbl_category_product','tbl_category_product.category_id', '=', 'tbl_product.category_id')
-        // ->join('tbl_brand_product','tbl_brand_product.brand_id', '=', 'tbl_product.brand_id')
-        // ->where('tbl_category_product.category_id', $product_id)->get();
 
         return view('pages.product.show_detail_product')
         ->with('category', $category_product)

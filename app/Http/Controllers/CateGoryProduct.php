@@ -80,9 +80,9 @@ class CateGoryProduct extends Controller
         $brand_product = DB::table('tbl_brand_product')->where('brand_status', '1')->orderby('brand_id', 'desc')->get();
 
         $cate_by_id = DB::table('tbl_product')->join('tbl_category_product', 'tbl_product.category_id', '=',
-        'tbl_category_product.category_id')->where('tbl_product.category_id', $cate_id)->get();
+        'tbl_category_product.category_id')->where('tbl_product.category_id', $cate_id)->paginate(5);
 
-        $category_name = DB::table('tbl_category_product')->where('tbl_category_product.category_id', $cate_id)->limit(1)->get();
+        $category_name = DB::table('tbl_category_product')->where('tbl_category_product.category_id', $cate_id)->get();
 
         return view('pages.category.show_category_home')->with('category', $category_product)->with('brand', $brand_product)
         ->with('category_by_id', $cate_by_id)->with('category_name', $category_name);

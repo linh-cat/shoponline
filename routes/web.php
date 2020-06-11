@@ -11,7 +11,7 @@ Route::get('/category-product/{cate_id}', 'CateGoryProduct@show_category_home');
 Route::get('/brand-product/{brand_id}', 'BrandsProduct@show_brand_home');
 
 //detail
-Route::get('details/{product_id}', 'ControllerProduct@show_detail_product');
+Route::get('/details/{product_id}', 'ControllerProduct@show_detail_product');
 
 // back-end
 Route::get('/admin', 'AdminController@index');
