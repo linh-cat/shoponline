@@ -21,11 +21,15 @@ class ControllerCheckOut extends Controller
     public function view_order($orderId){
         $this->AuthLogin();
         $order_by_id = DB::table('tbl_order')
-        ->join('tbl_customer','tbl_order.customer_id', '=', 'tbl_customer.customer_id')
-        ->join('tbl_shipping','tbl_order.shipping_id', '=', 'tbl_shipping.shipping_id')
-        ->join('tbl_order_detail','tbl_order.order_id', '=', 'tbl_order_detail.order_id')
-        ->select('tbl_order.*', 'tbl_customer.*', 'tbl_shipping.*', 'tbl_order_detail.*')->first();
-
+        ->join('tbl_customer',function($join) use($orderId){
+            $join->on('tbl_order.customer_id', '=', 'tbl_customer.customer_id')->where('tbl_order.order_id', '=', $orderId);
+        })
+        ->join('tbl_shipping',function($join) use($orderId){
+            $join->on('tbl_order.shipping_id', '=', 'tbl_shipping.shipping_id')->where('tbl_order.order_id', '=', $orderId);
+        })
+        ->join('tbl_order_detail',function($join) use($orderId){
+            $join->on('tbl_order.order_id', '=', 'tbl_order_detail.order_id')->where('tbl_order.order_id', '=', $orderId);
+        })->get();
         $manager_order_by_id = view('admin.view_order')->with('view_order', $order_by_id);
         return view('admin_layout')->with('admin.view_order', $manager_order_by_id);
     }
@@ -145,6 +149,12 @@ class ControllerCheckOut extends Controller
 
         $manager_order = view('admin.manage_order')->with('all_order', $all_order);
         return view('admin_layout')->with('admin.manage_order', $manager_order);
-
+    }
+    public function delete_order($orderId){
+        $this->AuthLogin();
+        DB::table('tbl_order')->where('order_id', $orderId)->delete();
+        DB::table('tbl_order_detail')->where('order_id', $orderId)->delete();
+        Session::put('message', 'Delete successfull!');
+        return Redirect::to('manage-order');
     }
 }

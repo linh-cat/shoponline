@@ -82,3 +82,5 @@ Route::post('/order-place', 'ControllerCheckOut@order_place');
 // order
 Route::get('/manage-order', 'ControllerCheckOut@manage_order');
 Route::get('/view-order/{orderId}', 'ControllerCheckOut@view_order');
+Route::get('/delete-order/{orderId}', 'ControllerCheckOut@delete_order');
+

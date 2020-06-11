@@ -30,11 +30,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <tr>
-                            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                            <td>{{$view_order->customer_name}}</td>
-                            <td>{{$view_order->customer_phone}}</td>
-                        </tr>
+                    @foreach ($view_order as $item)
+                    <tr>
+                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                        <td>{{$item->customer_name}}</td>
+                        <td>{{$item->customer_phone}}</td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -51,7 +53,7 @@
     ?>
     <div class="panel panel-default">
         <div class="panel-heading">
-            Infor Shipper
+            Infor Shipping
         </div>
 
         <div class="table-responsive">
@@ -70,12 +72,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                        <tr>
-                            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                            <td>{{$view_order->shipping_name}}</td>
-                            <td>{{$view_order->shipping_address}}</td>
-                            <td>{{$view_order->shipping_phone}}</td>
-                        </tr>
+                    @foreach ($view_order as $item)
+                    <tr>
+                        <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                        <td>{{$item->shipping_name}}</td>
+                        <td>{{$item->shipping_address}}</td>
+                        <td>{{$item->shipping_phone}}</td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -112,13 +116,15 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($view_order as $item)
                     <tr>
                         <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                        <td>{{$view_order->product_name}}</td>
-                        <td>{{$view_order->product_sales_quantity}}</td>
-                        <td>{{$view_order->product_price}}</td>
-                        <td>{{$view_order->product_price*$view_order->product_sales_quantity}}</td>
+                        <td>{{$item->product_name}}</td>
+                        <td>{{$item->product_sales_quantity}}</td>
+                        <td>{{$item->product_price}}</td>
+                        <td>{{$item->product_price*$item->product_sales_quantity}}</td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

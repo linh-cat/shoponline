@@ -28,8 +28,6 @@ class ControllerCart extends Controller
         Cart::add($data);
 
         return Redirect::to('/show-cart');
-
-
     }
     public function show_cart(){
         $category_product = DB::table('tbl_category_product')->where('category_status', '1')->orderby('category_id', 'desc')->get();
