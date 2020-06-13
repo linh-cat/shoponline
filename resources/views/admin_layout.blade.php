@@ -99,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li class="sub-menu">
                         <a href="javascript:;">
                             <i class="fa fa-book"></i>
-                            <span>List products</span>
+                            <span>Categories products</span>
                         </a>
                         <ul class="sub">
                             <li><a href="/add-category-product">Add Product Category</a></li>

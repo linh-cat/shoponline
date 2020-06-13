@@ -27,7 +27,8 @@
                 @foreach ($content as $v_content)
                 <tr>
                     <td class="cart_product">
-                        <a href=""><img src="{{URL::to('public/uploads/product/'. $v_content->image)}}" alt="pro" width="50"></a>
+                        {{-- <a href=""><img src="{{URL::to('public/uploads/product/'. $v_content->image)}}" alt="pro" width="50"></a> --}}
+                    <p>no image</p>
                     </td>
                     <td class="cart_description">
                         <h4><a href="#">{{$v_content->name}}</a></h4>

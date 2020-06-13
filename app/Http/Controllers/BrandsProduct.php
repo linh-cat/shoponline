@@ -23,7 +23,7 @@ class BrandsProduct extends Controller
     }
     public function all_brand_product(){
         $this->AuthLogin();
-        $all_brand_product = DB::table('tbl_brand_product')->get();
+        $all_brand_product = DB::table('tbl_brand_product')->paginate(5);
         $manager_brand_product = view('admin.all_brand_product')->with('all_brand_product', $all_brand_product);
         return view('admin_layout')->with('admin.all_brand_product', $manager_brand_product);
     }
